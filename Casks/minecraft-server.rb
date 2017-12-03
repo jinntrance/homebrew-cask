@@ -1,6 +1,6 @@
 cask 'minecraft-server' do
-  version '1.12'
-  sha256 'feebff3834e41cc096522525707d2dd27adc2431b1f3145b9d0ccfc4c8a3dc09'
+  version '1.12.2'
+  sha256 'fe1f9274e6dad9191bf6e6e8e36ee6ebc737f373603df0946aafcded0d53167e'
 
   # s3.amazonaws.com/Minecraft.Download was verified as official when first introduced to the cask
   url "https://s3.amazonaws.com/Minecraft.Download/versions/#{version}/minecraft_server.#{version}.jar"
@@ -14,22 +14,22 @@ cask 'minecraft-server' do
   binary shimscript, target: 'minecraft-server'
 
   preflight do
-    IO.write shimscript, <<-EOS.undent
+    IO.write shimscript, <<~EOS
       #!/bin/sh
-      cd "$(dirname "$(readlink -n $0)")" && \
-        java -Xmx1024M -Xms1024M -jar 'minecraft_server.#{version}.jar' nogui
+      cd "$(dirname "$(readlink -n "$0" || echo "$0")")" && \
+        /usr/bin/java -Xmx1024M -Xms1024M -jar 'minecraft_server.#{version}.jar' nogui
     EOS
   end
 
   postflight do
-    system_command 'minecraft-server'
+    system_command shimscript
 
     eula_file = "#{staged_path}/eula.txt"
-    IO.write(eula_file, IO.read(eula_file).gsub('false', 'TRUE'))
+    IO.write(eula_file, IO.read(eula_file).sub('eula=false', 'eula=TRUE'))
   end
 
   caveats do
-    <<-EOS.undent
+    <<~EOS
       To run this app, type "#{token}" in terminal.
       To configure the server take a look at the files staged at #{staged_path}
     EOS

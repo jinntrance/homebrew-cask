@@ -14,25 +14,34 @@ cask 'docker' do
 
   app 'Docker.app'
 
-  uninstall delete:    '/Library/PrivilegedHelperTools/com.docker.vmnetd',
+  uninstall delete:    [
+                         '/Library/PrivilegedHelperTools/com.docker.vmnetd',
+                         '/usr/local/bin/docker',
+                         '/usr/local/bin/docker-compose',
+                         '/usr/local/bin/docker-credential-osxkeychain',
+                         '/usr/local/bin/docker-machine',
+                         '/usr/local/bin/hyperkit',
+                         '/usr/local/bin/notary',
+                         '/usr/local/bin/vpnkit',
+                       ],
             launchctl: [
                          'com.docker.helper',
                          'com.docker.vmnetd',
                        ],
             quit:      'com.docker.docker'
 
-  zap delete: [
-                '~/Library/Application Scripts/com.docker.helper',
-                '~/Library/Caches/KSCrashReports/Docker',
-                '~/Library/Caches/com.docker.docker',
-                '~/Library/Caches/com.plausiblelabs.crashreporter.data/com.docker.docker',
-                '~/Library/Containers/com.docker.docker',
-                '~/Library/Containers/com.docker.helper',
-                '~/Library/Group Containers/group.com.docker',
-              ],
-      trash:  '~/Library/Preferences/com.docker.docker.plist',
-      rmdir:  [
-                '~/Library/Caches/KSCrashReports',
-                '~/Library/Caches/com.plausiblelabs.crashreporter.data',
-              ]
+  zap trash: [
+               '~/Library/Application Scripts/com.docker.helper',
+               '~/Library/Caches/KSCrashReports/Docker',
+               '~/Library/Caches/com.docker.docker',
+               '~/Library/Caches/com.plausiblelabs.crashreporter.data/com.docker.docker',
+               '~/Library/Containers/com.docker.docker',
+               '~/Library/Containers/com.docker.helper',
+               '~/Library/Group Containers/group.com.docker',
+               '~/Library/Preferences/com.docker.docker.plist',
+             ],
+      rmdir: [
+               '~/Library/Caches/KSCrashReports',
+               '~/Library/Caches/com.plausiblelabs.crashreporter.data',
+             ]
 end

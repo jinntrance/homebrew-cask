@@ -17,19 +17,19 @@ cask 'vlc' do
   binary shimscript, target: 'vlc'
 
   preflight do
-    IO.write shimscript, <<-EOS.undent
+    IO.write shimscript, <<~EOS
       #!/bin/sh
       '#{appdir}/VLC.app/Contents/MacOS/VLC' "$@"
     EOS
   end
 
-  zap delete: [
-                '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/org.videolan.vlc.sfl',
-                '~/Library/Application Support/org.videolan.vlc',
-                '~/Library/Application Support/VLC',
-                '~/Library/Preferences/org.videolan.vlc',
-                '~/Library/Preferences/org.videolan.vlc.plist',
-                '~/Library/Saved Application State/org.videolan.vlc.savedState',
-                '~/Library/Caches/org.videolan.vlc',
-              ]
+  zap trash: [
+               '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/org.videolan.vlc.sfl*',
+               '~/Library/Application Support/org.videolan.vlc',
+               '~/Library/Application Support/VLC',
+               '~/Library/Preferences/org.videolan.vlc',
+               '~/Library/Preferences/org.videolan.vlc.plist',
+               '~/Library/Saved Application State/org.videolan.vlc.savedState',
+               '~/Library/Caches/org.videolan.vlc',
+             ]
 end

@@ -9,9 +9,9 @@ cask 'rstudio' do
 
   app 'RStudio.app'
 
-  zap delete: '~/.rstudio-desktop'
+  zap trash: '~/.rstudio-desktop'
 
-  caveats <<-EOS.undent
+  caveats <<~EOS
     #{token} depends on R.
     There are different ways to satisfy that dependency and we don’t want to impose one, so it is up to you to satisfy it.
     We suggest you do so by running one of:

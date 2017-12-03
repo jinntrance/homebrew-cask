@@ -68,11 +68,11 @@ cask 'android-sdk' do
 
   caveats do
     depends_on_java('8')
-    <<-EOS.undent
+    <<~EOS
       We will install android-sdk-tools, platform-tools, and build-tools for you.
       You can control android sdk packages via the sdkmanager command.
       You may want to add to your profile:
-        'export ANDROID_SDK_ROOT=#{HOMEBREW_PREFIX}/share/android-sdk'
+        'export ANDROID_SDK_ROOT="#{HOMEBREW_PREFIX}/share/android-sdk"'
 
       This operation may take up to 10 minutes depending on your internet connection.
       Please, be patient.

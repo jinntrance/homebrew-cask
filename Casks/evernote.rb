@@ -6,13 +6,13 @@ cask 'evernote' do
     version '6.8_453748'
     sha256 '53fb93884fbd8f966ef43248dad3a7570ad18eb43fd289ad614ee8cff3a26d33'
   else
-    version '6.12.3_455520'
-    sha256 'fdda9701f1d8ff56a5e8bcadcf5b04dba66ad7e08511700de4675d20fda2bc71'
+    version '6.13.1_455785'
+    sha256 '939331ec1071af7b6eb6a5f3b4ed60c1a8b1dd1d568462cb464d78fd3a28f66d'
   end
 
   url "https://cdn1.evernote.com/mac-smd/public/Evernote_RELEASE_#{version}.dmg"
   appcast 'https://update.evernote.com/public/ENMacSMD/EvernoteMacUpdate.xml',
-          checkpoint: 'c7302d6a89105b6bd3ed418719491d8b138dc4bab5979b9c87881f0095334f9e'
+          checkpoint: 'aadb2ea3842814853c664718f5363188da2cd6f94e8b4d4e28921d6420d3af1f'
   name 'Evernote'
   homepage 'https://evernote.com/'
 
@@ -25,11 +25,11 @@ cask 'evernote' do
                     'com.evernote.EvernoteHelper',
                   ]
 
-  zap delete: [
-                '~/Library/Application Support/com.evernote.Evernote',
-                '~/Library/Application Support/com.evernote.EvernoteHelper',
-                '~/Library/Caches/com.evernote.Evernote',
-                '~/Library/Preferences/com.evernote.Evernote.plist',
-                '~/Library/Preferences/com.evernote.EvernoteHelper.plist',
-              ]
+  zap trash: [
+               '~/Library/Application Support/com.evernote.Evernote',
+               '~/Library/Application Support/com.evernote.EvernoteHelper',
+               '~/Library/Caches/com.evernote.Evernote',
+               '~/Library/Preferences/com.evernote.Evernote.plist',
+               '~/Library/Preferences/com.evernote.EvernoteHelper.plist',
+             ]
 end

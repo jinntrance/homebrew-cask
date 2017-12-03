@@ -10,12 +10,13 @@ cask 'discord' do
 
   app 'Discord.app'
 
-  zap delete: [
-                '~/Library/Application Support/com.hnc.Discord.ShipIt',
-                '~/Library/Application Support/discord',
-                '~/Library/Saved Application State/com.hnc.Discord.savedState',
-                '~/Library/Caches/com.hnc.Discord',
-                '~/Library/Caches/discord',
-                '~/Library/Preferences/com.hnc.Discord.plist',
-              ]
+  zap trash: [
+               '~/Library/Application Support/discord',
+               '~/Library/Caches/com.hnc.Discord',
+               '~/Library/Caches/com.hnc.Discord.ShipIt',
+               '~/Library/Cookies/com.hnc.Discord.binarycookies',
+               '~/Library/Preferences/com.hnc.Discord.helper.plist',
+               '~/Library/Preferences/com.hnc.Discord.plist',
+               '~/Library/Saved Application State/com.hnc.Discord.savedState',
+             ]
 end

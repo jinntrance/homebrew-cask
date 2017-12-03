@@ -1,10 +1,10 @@
 cask 'phpstorm' do
-  version '2017.2.4,172.4155.41'
-  sha256 'e2476ea044b7f5bfb27b871072c45d65a48e7f348e4bdf6fe4dc0424f4220f1c'
+  version '2017.3,173.3727.138'
+  sha256 '54a216015c5d477414446a1ea9d25d3afa054b83a25db010003f72bbccc330ad'
 
   url "https://download.jetbrains.com/webide/PhpStorm-#{version.before_comma}.dmg"
   appcast 'https://data.services.jetbrains.com/products/releases?code=PS&latest=true&type=release',
-          checkpoint: 'f608ad177d59bad1f7138a38dd0dd550875a97fa98bfc5039478bbc30c71ae79'
+          checkpoint: '6083df1b8e2dce9d446fec4d7bb3242e3d8991c86f9b7e86d765b9ad4e724d71'
   name 'JetBrains PhpStorm'
   homepage 'https://www.jetbrains.com/phpstorm/'
 
@@ -16,13 +16,11 @@ cask 'phpstorm' do
     ENV['PATH'].split(File::PATH_SEPARATOR).map { |path| File.join(path, 'pstorm') }.each { |path| File.delete(path) if File.exist?(path) && File.readlines(path).grep(%r{# see com.intellij.idea.SocketLock for the server side of this interface}).any? }
   end
 
-  zap delete: [
-                "~/Library/Caches/PhpStorm#{version.major_minor}",
-                "~/Library/Logs/PhpStorm#{version.major_minor}",
-              ],
-      trash:  [
-                "~/Library/Application Support/PhpStorm#{version.major_minor}",
-                "~/Library/Preferences/PhpStorm#{version.major_minor}",
-                '~/Library/Preferences/jetbrains.phpstorm.*.plist',
-              ]
+  zap trash: [
+               "~/Library/Application Support/PhpStorm#{version.major_minor}",
+               "~/Library/Caches/PhpStorm#{version.major_minor}",
+               "~/Library/Logs/PhpStorm#{version.major_minor}",
+               "~/Library/Preferences/PhpStorm#{version.major_minor}",
+               '~/Library/Preferences/jetbrains.phpstorm.*.plist',
+             ]
 end

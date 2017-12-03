@@ -1,13 +1,13 @@
 cask 'franz' do
-  version '4.0.4'
-  sha256 'a744a4e4086647ad8c982b38aae761c6a5e3a1394cb4a0d5e2c6bff8e46742cf'
+  version '5.0.0-beta.14'
+  sha256 'ced44b6c9e6bd68e6c467aca283d901829aa6e9614c487fc898bb8076b044ae7'
 
-  # github.com/meetfranz/franz-app was verified as official when first introduced to the cask
-  url "https://github.com/meetfranz/franz-app/releases/download/#{version}/Franz-darwin-x64-#{version}.dmg"
-  appcast 'https://github.com/meetfranz/franz-app/releases.atom',
-          checkpoint: '2ae578b5675bad0f5a97a3870acaedaad246e0fa61071cb63717ba1624e91201'
+  # github.com/meetfranz/franz was verified as official when first introduced to the cask
+  url "https://github.com/meetfranz/franz/releases/download/v#{version}/franz-#{version}.dmg"
+  appcast 'https://github.com/meetfranz/franz/releases.atom',
+          checkpoint: 'e2ff1ff90f316ba2e14ddcd8e97f8f2a7f86e7cf500058531809ee59c71a49a9'
   name 'Franz'
-  homepage 'http://meetfranz.com/'
+  homepage 'https://meetfranz.com/'
 
   app 'Franz.app'
 end

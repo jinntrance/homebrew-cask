@@ -1,9 +1,11 @@
 cask 'visual-studio-code' do
-  version '1.17.1,1e9d36539b0ae51ac09b9d4673ebea4e447e5353'
-  sha256 '5b348536c5ac8340f8f0fa10dae777f977be601e2a186f0104ac37cd56d5ebed'
+  version '1.18.1,929bacba01ef658b873545e26034d1a8067445e9'
+  sha256 'b3aafb308a32154a0827313e7dcb9ea64f7e6f0ece0bcf43f81d445d85467324'
 
-  # az764295.vo.msecnd.net was verified as official when first introduced to the cask
+  # az764295.vo.msecnd.net/stable was verified as official when first introduced to the cask
   url "https://az764295.vo.msecnd.net/stable/#{version.after_comma}/VSCode-darwin-stable.zip"
+  appcast 'https://vscode-update.azurewebsites.net/api/update/darwin/stable/VERSION',
+          checkpoint: '4900baa6b3786449562a632406d4c223b4708d45177af6715a8cdba61cb5d8a6'
   name 'Microsoft Visual Studio Code'
   name 'VS Code'
   homepage 'https://code.visualstudio.com/'
@@ -14,16 +16,14 @@ cask 'visual-studio-code' do
   app 'Visual Studio Code.app'
   binary "#{appdir}/Visual Studio Code.app/Contents/Resources/app/bin/code"
 
-  zap delete: [
-                '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.microsoft.vscode.sfl',
-                '~/Library/Caches/com.microsoft.VSCode',
-                '~/Library/Caches/com.microsoft.VSCode.ShipIt',
-                '~/Library/Saved Application State/com.microsoft.VSCode.savedState',
-              ],
-      trash:  [
-                '~/Library/Application Support/Code',
-                '~/Library/Preferences/com.microsoft.VSCode.helper.plist',
-                '~/Library/Preferences/com.microsoft.VSCode.plist',
-                '~/.vscode',
-              ]
+  zap trash: [
+               '~/Library/Application Support/Code',
+               '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.microsoft.vscode.sfl*',
+               '~/Library/Caches/com.microsoft.VSCode',
+               '~/Library/Caches/com.microsoft.VSCode.ShipIt',
+               '~/Library/Preferences/com.microsoft.VSCode.helper.plist',
+               '~/Library/Preferences/com.microsoft.VSCode.plist',
+               '~/Library/Saved Application State/com.microsoft.VSCode.savedState',
+               '~/.vscode',
+             ]
 end

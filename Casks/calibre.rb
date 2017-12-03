@@ -1,15 +1,10 @@
 cask 'calibre' do
-  if MacOS.version <= :lion
-    version '1.48.0'
-    sha256 '0533283965fbc9a6618d0b27c85bdf3671fe75ff0e89eeff406fe1457ee61b14'
-  else
-    version '3.9.0'
-    sha256 'e4513ebbf04b3b696b2c4edf0e11f3497e9b7b2a6c25a52495648cb5d0687410'
-    appcast 'https://github.com/kovidgoyal/calibre/releases.atom',
-            checkpoint: 'b78f1581738d083ca6eff2d24d3f414c693f7e1d491f44153bdfdfcba3a15355'
-  end
+  version '3.13.0'
+  sha256 'cdc45a894488048fbe7e3cad95ff3f67b6040d9d32ea799548550a91fcc7c0c4'
 
   url "https://download.calibre-ebook.com/#{version}/calibre-#{version}.dmg"
+  appcast 'https://github.com/kovidgoyal/calibre/releases.atom',
+          checkpoint: '7ddb876decbe53a2f12b545f57362754565c9cc968b37a91172b3a89e740c1de'
   name 'calibre'
   homepage 'https://calibre-ebook.com/'
 
@@ -35,9 +30,11 @@ cask 'calibre' do
   binary "#{appdir}/calibre.app/Contents/MacOS/markdown-calibre"
   binary "#{appdir}/calibre.app/Contents/MacOS/web2disk"
 
-  zap delete: [
-                '~/Library/Preferences/net.kovidgoyal.calibre.plist',
-                '~/Library/Preferences/calibre',
-                '~/Library/Caches/calibre',
-              ]
+  zap trash: [
+               '~/Library/Caches/calibre',
+               '~/Library/Preferences/calibre',
+               '~/Library/Preferences/net.kovidgoyal.calibre.plist',
+               '~/Library/Saved Application State/com.calibre-ebook.ebook-viewer.savedState',
+               '~/Library/Saved Application State/net.kovidgoyal.calibre.savedState',
+             ]
 end

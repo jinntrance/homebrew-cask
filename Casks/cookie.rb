@@ -1,10 +1,10 @@
 cask 'cookie' do
-  version '5.6.1'
-  sha256 'a8e0902cbf5d65d4cbb9e79fb9412d241b2b3dc6769774f82ba201ecfe94aa51'
+  version '5.7.3'
+  sha256 '374f0e331213a9d2e0f4356a97909f73c80e243afae50450dba46e5a043b8c9d'
 
   url "https://sweetpproductions.com/products/cookie#{version.major}/Cookie#{version.major}.dmg"
   appcast "https://sweetpproductions.com/products/cookie#{version.major}/appcast.xml",
-          checkpoint: 'fac18c823b408f9c3833b5b8703ee508a99e031bc9d93c58ee9ca64d38c7a429'
+          checkpoint: 'a3bb6a666199d78d8a030291bf61a902ba4eec9d755c262013785789a9cfd211'
   name 'Cookie'
   homepage 'https://sweetpproductions.com/'
 
@@ -12,9 +12,9 @@ cask 'cookie' do
 
   app 'Cookie.app'
 
-  zap delete: [
-                '~/Library/Application Scripts/com.sweetpproductions.Cookie5',
-                '~/Library/Containers/com.sweetpproductions.Cookie5',
-                '~/Library/Preferences/com.sweetpproductions.Cookie5.plist',
-              ]
+  zap trash: [
+               '~/Library/Application Scripts/com.sweetpproductions.Cookie5',
+               '~/Library/Containers/com.sweetpproductions.Cookie5',
+               '~/Library/Preferences/com.sweetpproductions.Cookie5.plist',
+             ]
 end
